@@ -56,18 +56,18 @@ public class Empresa extends Usuario {
     }
     
     @Override
-    public void criarAmizade(ArrayList<Usuario> listaUsuarios) {
-        super.criarAmizade(listaUsuarios);
+    public void criarAmizade(ArrayList<Usuario> listaUsuarios, String nomeUsuario) {
+        super.criarAmizade(listaUsuarios, nomeUsuario);
     }
 
     @Override
-    public void imprimirAmizade(ArrayList<Usuario> listaUsuarios) {
-        super.imprimirAmizade(listaUsuarios);
+    public void imprimirAmizade(ArrayList<Usuario> listaUsuarios, String nomeUsuario) {
+        super.imprimirAmizade(listaUsuarios, nomeUsuario);
     }
 
     @Override
-    public void removerAmizade(ArrayList<Usuario> listaUsuarios) {
-        super.removerAmizade(listaUsuarios);
+    public void removerAmizade(ArrayList<Usuario> listaUsuarios, String nomeUsuario) {
+        super.removerAmizade(listaUsuarios, nomeUsuario);
     }
     
     @Override

@@ -30,11 +30,12 @@ public class Usuario {  //Atributos da classe
 
     public void removerUsuario(ArrayList<Usuario> listaUsuarios, String nome) {
         if (!listaUsuarios.isEmpty()) {
+        	ArrayList<Usuario> remover = new ArrayList<>();
             for (Usuario u : listaUsuarios) {
                 if (u.getNome().equalsIgnoreCase(nome)) {
-                    listaUsuarios.remove(u);
+                    remover.add(u);
                 }
-            }
+            }listaUsuarios.removeAll(remover);
         } else {
             System.out.println("A lista esta vazia!");
         }
@@ -52,11 +53,9 @@ public class Usuario {  //Atributos da classe
         }
     }
 
-    public void criarAmizade(ArrayList<Usuario> listaUsuarios) {
+    public void criarAmizade(ArrayList<Usuario> listaUsuarios, String nomeUsuario) {
         if (!listaUsuarios.isEmpty()) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Digite o nome do usuario: ");
-            String nomeUsuario = sc.nextLine();
             for (Usuario u : listaUsuarios) {
                 if (u.getNome().equalsIgnoreCase(nomeUsuario)) {
                     System.out.println("Com quem deseja fazer amizade? ");
@@ -64,8 +63,6 @@ public class Usuario {  //Atributos da classe
                     for (Usuario a : listaUsuarios) {
                         if (a.getNome().equalsIgnoreCase(nomeAmigo)) {
                             u.listaAmizades.add(a);
-                        } else {
-                            System.out.println("Usuario nao encontrado!");
                         }
                     }
                 }
@@ -75,11 +72,9 @@ public class Usuario {  //Atributos da classe
         }
     }
 
-    public void removerAmizade(ArrayList<Usuario> listaUsuarios) {
+    public void removerAmizade(ArrayList<Usuario> listaUsuarios, String nomeUsuario) {
         if (!listaUsuarios.isEmpty()) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Digite o nome do usuario: ");
-            String nomeUsuario = sc.nextLine();
             for (Usuario u : listaUsuarios) {
                 if (u.getNome().equalsIgnoreCase(nomeUsuario)) {
                     System.out.println("Com quem deseja remover amizade? ");
@@ -87,8 +82,6 @@ public class Usuario {  //Atributos da classe
                     for (Usuario a : listaUsuarios) {
                         if (a.getNome().equalsIgnoreCase(nomeAmigo)) {
                             u.listaAmizades.remove(a);
-                        } else {
-                            System.out.println("Usuario nao encontrado!");
                         }
                     }
                 }
@@ -98,20 +91,23 @@ public class Usuario {  //Atributos da classe
         }
     }
 
-    public void imprimirAmizade(ArrayList<Usuario> listaUsuarios) {
-        if (!listaUsuarios.isEmpty()) {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Digite o nome do usuario: ");
-            String nomeUsuario = sc.nextLine();
-            for (Usuario u : listaUsuarios) {
-                if (u.getNome().equalsIgnoreCase(nomeUsuario)) {
-                    System.out.println("Lista de amigos de " + u.getNome() + ":\n" + u.listaAmizades);
-                } else {
-                    System.out.println("Usuario nao encontrado!");
-                }
+    public void imprimirAmizade(ArrayList<Usuario> listaUsuarios, String nomeUsuario) {
+        if (!listaAmizades.isEmpty()) {
+        	if (!listaUsuarios.isEmpty()) {
+                for (Usuario u : listaUsuarios) {
+                    if (u.getNome().equalsIgnoreCase(nomeUsuario)) {
+                        System.out.println("Lista de amigos de " + u.getNome() + ":");
+                        for (Usuario a : listaAmizades) {
+                        	System.out.println(a.getNome());
+                        }
+                    }
+                }System.out.println("\n");
+            } else {
+                System.out.println("A lista esta vazia!");
             }
-        } else {
-            System.out.println("A lista esta vazia!");
+        }else {
+        	System.out.println("Voce nao tem amigos atualmente!");
         }
+    	
     }
 }

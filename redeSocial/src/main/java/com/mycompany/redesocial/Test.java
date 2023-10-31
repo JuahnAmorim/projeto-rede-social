@@ -12,7 +12,7 @@ public class Test{
         Scanner sc = new Scanner(System.in);
         do{
         	//fazer metodo login para todos os metodos ficarem para um usuario
-            System.out.println("1 - Login;\n" +
+            System.out.println("1 - Login/Cadastro de usuario;\n" +
                                "2 - Atualizar usuario;\n" +
                                "3 - Remover usuario;\n" +
                                "4 - Imprimir usuarios;\n" +
@@ -24,7 +24,7 @@ public class Test{
             sc.nextLine();
             switch(op){
                 case 1:
-                    System.out.println("Login\nNome: ");
+                    System.out.println("Login: ");
                     String nomeLogin = sc.nextLine();
                     boolean usuarioEncontrado = false;
                     for(Usuario u : listaUsuarios) {
@@ -36,7 +36,7 @@ public class Test{
                     	}
                     }
                     if(usuarioEncontrado == false) {
-                    	System.out.println("Cadastre-se:");
+                    	System.out.println("\nSeu usuario ainda nao existe!\nCadastre-se:");
                         System.out.println("1 - Pessoa\n2 - Empresa");
                         int opcao = sc.nextInt();
                         sc.nextLine();
@@ -67,33 +67,75 @@ public class Test{
                     }
                 
                 case 2:
-                	System.out.println("Atualizacao do usuario");
-                	if(usuario instanceof Pessoa) {
-                		System.out.println("Novo nome: ");
-                		String novoNome = sc.nextLine();
-                		System.out.println("Nova idade: ");
-                		int novaIdade = sc.nextInt();
-                		sc.nextLine();
-                		((Pessoa) usuario).atualizarUsuario(novoNome, novaIdade);
-                	}else if(usuario instanceof Empresa) {
-                		System.out.println("Novo nome: ");
-                		String novoNome = sc.nextLine();
-                		System.out.println("Novo ramo: ");
-                		String novoRamo = sc.nextLine();
-                		System.out.println("Novo anuncio: ");
-                		String novoAnuncio = sc.nextLine();
-                		((Empresa) usuario).atualizarUsuario(novoNome, novoRamo, novoAnuncio);
-                	}else {
-                		System.out.println("Nnenhum");
-                	}
+                	if (usuario.getNome() != null) {
+	                	System.out.println("Atualizacao do usuario");
+	                	if(usuario instanceof Pessoa) {
+	                		System.out.println("Novo nome: ");
+	                		String novoNome = sc.nextLine();
+	                		System.out.println("Nova idade: ");
+	                		int novaIdade = sc.nextInt();
+	                		sc.nextLine();
+	                		((Pessoa) usuario).atualizarUsuario(novoNome, novaIdade);
+	                	}else if(usuario instanceof Empresa) {
+	                		System.out.println("Novo nome: ");
+	                		String novoNome = sc.nextLine();
+	                		System.out.println("Novo ramo: ");
+	                		String novoRamo = sc.nextLine();
+	                		System.out.println("Novo anuncio: ");
+	                		String novoAnuncio = sc.nextLine();
+	                		((Empresa) usuario).atualizarUsuario(novoNome, novoRamo, novoAnuncio);
+	                	}
+	                	break;
+                	}System.out.println("Para atualizar o usuario, primeiro faca login!\n");
                     break;
                     
                 case 3:
-                	//remover
+                	if (usuario.getNome() != null) {
+                		usuario.removerUsuario(listaUsuarios, usuario.getNome());
+                    	System.out.println("O usuario " + usuario.getNome() + " foi removido!\n");
+                    	break;
+                	}
+                	System.out.println("Para excluir, primeiro faca login!\n");
+                	break;
                 	
                 case 4:
-                    usuario.imprimirUsuarios(listaUsuarios);
+                	if (usuario.getNome() != null) {
+                		usuario.imprimirUsuarios(listaUsuarios);
+                        break;
+                	}
+                	System.out.println("Para imprimir os usuarios, primeiro faca login!\n");
                     break;
+                    
+                case 5:
+                	if (usuario.getNome() != null) {
+                		usuario.criarAmizade(listaUsuarios, usuario.getNome());
+                		break;
+                	}
+                	System.out.println("Para criar amizades, primeiro faca login!\n");
+                	break;
+                	
+                case 6:
+                	if (usuario.getNome() != null) {
+                		usuario.removerAmizade(listaUsuarios, usuario.getNome());
+                		break;
+                	}
+                	System.out.println("Para remover amizades, primeiro faca login!\n");
+                	break;
+                	
+                case 7: 
+                	if (usuario.getNome() != null) {
+                		usuario.imprimirAmizade(listaUsuarios, usuario.getNome());
+                		break;
+                	}
+                	System.out.println("Para imprimir amizades, primeiro faca login!\n");
+                	break;
+                	
+                case 8:
+                	
+                case 0:
+                	System.out.println("Saindo do sistema...");
+                	return;
+                	
             }
         }while(true);
     }
