@@ -13,8 +13,7 @@ public class Empresa extends Usuario {
         this.ramo = ramo;
         this.anuncio = anuncio;
     }
-    public Empresa(){
-    }
+    public Empresa(){}
 
     public String getRamo() {
         return ramo;
@@ -34,20 +33,29 @@ public class Empresa extends Usuario {
 
     public Empresa criarEmpresa() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Digite o nome do usuario: ");
+        System.out.print("Digite o nome do usuario: ");
         String nome = sc.nextLine();
-        System.out.println("Digite o ramo da empresa: ");
+        System.out.print("Digite o ramo da empresa: ");
         String ramo = sc.nextLine();
-        System.out.println("Digite o anuncio da empresa: ");
+        System.out.print("Digite o anuncio da empresa: ");
         String anuncio = sc.nextLine();
+        System.out.println("O usuario " + nome + " foi criado!");
         return new Empresa(nome, ramo, anuncio);
 
     }
     
-    public void atualizarUsuario(String nome, String ramo, String anuncio) {
-    	this.setNome(nome);
-    	this.setRamo(ramo);
-    	this.setAnuncio(anuncio);
+    public void atualizarUsuario() {
+    	Scanner sc = new Scanner(System.in);
+		System.out.print("Novo nome: ");
+		String novoNome = sc.nextLine();
+		System.out.print("Novo ramo: ");
+		String novoRamo = sc.nextLine();
+		System.out.print("Novo anuncio: ");
+		String novoAnuncio = sc.nextLine();
+		this.setNome(novoNome);
+    	this.setRamo(novoRamo);
+    	this.setAnuncio(novoAnuncio);
+    	System.out.println("\nAs informacoes do usuario " + novoNome + " foram atualizadas!\n");
     }
 
     @Override

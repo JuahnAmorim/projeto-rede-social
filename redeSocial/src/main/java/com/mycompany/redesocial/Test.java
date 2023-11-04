@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Test{
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
     	ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-    	Usuario usuario = new Usuario();
-    	//Inicializando as listas        
+    	Usuario usuario = new Usuario();    
+    	Pessoa p = new Pessoa();
+    	Empresa e = new Empresa();
         Scanner sc = new Scanner(System.in);
         do{
-        	//fazer metodo login para todos os metodos ficarem para um usuario
             System.out.println("1 - Login/Cadastro de usuario;\n" +
                                "2 - Atualizar usuario;\n" +
                                "3 - Remover usuario;\n" +
@@ -24,7 +24,7 @@ public class Test{
             sc.nextLine();
             switch(op){
                 case 1:
-                    System.out.println("Login: ");
+                    System.out.print("\nLogin: ");
                     String nomeLogin = sc.nextLine();
                     boolean usuarioEncontrado = false;
                     for(Usuario u : listaUsuarios) {
@@ -41,25 +41,15 @@ public class Test{
                         int opcao = sc.nextInt();
                         sc.nextLine();
                         if(opcao == 1){
-                        	System.out.println("Digite o nome: ");
-                        	String nome = sc.nextLine();
-                        	System.out.println("Digite a idade: ");
-                        	int idade = sc.nextInt();
-                        	System.out.println("\n");
-                        	Pessoa p = new Pessoa(nome, idade);
-                            listaUsuarios.add(p);
+                        	Usuario pessoa = p.criarPessoa();
+                            listaUsuarios.add(pessoa);
+                            System.out.println("\n");
                         }else if(opcao == 2){
-                        	System.out.println("Digite o nome: ");
-                        	String nome = sc.nextLine();
-                        	System.out.println("Digite o ramo: ");
-                        	String ramo = sc.nextLine();
-                        	System.out.println("Digite o anuncio: ");
-                        	String anuncio = sc.nextLine();
-                        	System.out.println("\n");
-                        	Empresa e = new Empresa(nome, ramo, anuncio);
-                            listaUsuarios.add(e);
+                        	Usuario empresa = e.criarEmpresa();
+                            listaUsuarios.add(empresa);
+                            System.out.println("\n");
                         }else{
-                            System.out.println("Opcao invalida!");
+                            System.out.println("Opcao invalida!\n");
                         }
                         break;
                     }else {
@@ -68,25 +58,14 @@ public class Test{
                 
                 case 2:
                 	if (usuario.getNome() != null) {
-	                	System.out.println("Atualizacao do usuario");
+	                	System.out.println("\nAtualizacao do usuario");
 	                	if(usuario instanceof Pessoa) {
-	                		System.out.println("Novo nome: ");
-	                		String novoNome = sc.nextLine();
-	                		System.out.println("Nova idade: ");
-	                		int novaIdade = sc.nextInt();
-	                		sc.nextLine();
-	                		((Pessoa) usuario).atualizarUsuario(novoNome, novaIdade);
+	                		((Pessoa) usuario).atualizarUsuario();
 	                	}else if(usuario instanceof Empresa) {
-	                		System.out.println("Novo nome: ");
-	                		String novoNome = sc.nextLine();
-	                		System.out.println("Novo ramo: ");
-	                		String novoRamo = sc.nextLine();
-	                		System.out.println("Novo anuncio: ");
-	                		String novoAnuncio = sc.nextLine();
-	                		((Empresa) usuario).atualizarUsuario(novoNome, novoRamo, novoAnuncio);
+	                		((Empresa) usuario).atualizarUsuario();
 	                	}
 	                	break;
-                	}System.out.println("Para atualizar o usuario, primeiro faca login!\n");
+                	}System.out.println("\nPara atualizar o usuario, primeiro faca login!\n");
                     break;
                     
                 case 3:
@@ -95,7 +74,7 @@ public class Test{
                     	System.out.println("O usuario " + usuario.getNome() + " foi removido!\n");
                     	break;
                 	}
-                	System.out.println("Para excluir, primeiro faca login!\n");
+                	System.out.println("\nPara excluir, primeiro faca login!\n");
                 	break;
                 	
                 case 4:
@@ -103,7 +82,7 @@ public class Test{
                 		usuario.imprimirUsuarios(listaUsuarios);
                         break;
                 	}
-                	System.out.println("Para imprimir os usuarios, primeiro faca login!\n");
+                	System.out.println("\nPara imprimir os usuarios, primeiro faca login!\n");
                     break;
                     
                 case 5:
@@ -111,7 +90,7 @@ public class Test{
                 		usuario.criarAmizade(listaUsuarios, usuario.getNome());
                 		break;
                 	}
-                	System.out.println("Para criar amizades, primeiro faca login!\n");
+                	System.out.println("\nPara criar amizades, primeiro faca login!\n");
                 	break;
                 	
                 case 6:
@@ -119,7 +98,7 @@ public class Test{
                 		usuario.removerAmizade(listaUsuarios, usuario.getNome());
                 		break;
                 	}
-                	System.out.println("Para remover amizades, primeiro faca login!\n");
+                	System.out.println("\nPara remover amizades, primeiro faca login!\n");
                 	break;
                 	
                 case 7: 
@@ -127,15 +106,15 @@ public class Test{
                 		usuario.imprimirAmizade(listaUsuarios, usuario.getNome());
                 		break;
                 	}
-                	System.out.println("Para imprimir amizades, primeiro faca login!\n");
+                	System.out.println("\nPara imprimir amizades, primeiro faca login!\n");
                 	break;
                 	
                 case 8:
-                	
-                case 0:
                 	System.out.println("Saindo do sistema...");
                 	return;
-                	
+                
+                default:
+                	System.out.println("Opcao invalida!\n");
             }
         }while(true);
     }
