@@ -12,7 +12,8 @@ public class Pessoa extends Usuario {
         this.idade = idade;
     }
     
-    public Pessoa(){}
+    public Pessoa(){
+    }
 
     public int getIdade() {
         return idade;
@@ -22,12 +23,14 @@ public class Pessoa extends Usuario {
         this.idade = idade;
     }
 
-    public Usuario criarPessoa() {
+    @Override
+    public Usuario criarUsuario() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite o nome da pessoa: ");
         String nome = sc.nextLine();
         System.out.println("Digite a idade da pessoa: ");
         int idade = sc.nextInt();
+        sc.nextLine();
         System.out.println("O usuario " + nome + " foi criado!");
         return new Pessoa(nome, idade);
     }
@@ -50,6 +53,7 @@ public class Pessoa extends Usuario {
         super.removerUsuario(listaUsuarios, nome);
     }
     
+    @Override
     public void imprimirUsuarios(ArrayList<Usuario> listaUsuarios) {
     	super.imprimirUsuarios(listaUsuarios);
     }

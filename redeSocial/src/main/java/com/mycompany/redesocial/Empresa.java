@@ -13,6 +13,7 @@ public class Empresa extends Usuario {
         this.ramo = ramo;
         this.anuncio = anuncio;
     }
+    
     public Empresa(){}
 
     public String getRamo() {
@@ -31,7 +32,8 @@ public class Empresa extends Usuario {
         this.anuncio = anuncio;
     }
 
-    public Empresa criarEmpresa() {
+    @Override
+    public Usuario criarUsuario() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o nome do usuario: ");
         String nome = sc.nextLine();
@@ -44,6 +46,7 @@ public class Empresa extends Usuario {
 
     }
     
+    @Override
     public void atualizarUsuario() {
     	Scanner sc = new Scanner(System.in);
 		System.out.print("Novo nome: ");

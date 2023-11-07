@@ -41,11 +41,11 @@ public class Test{
                         int opcao = sc.nextInt();
                         sc.nextLine();
                         if(opcao == 1){
-                        	Usuario pessoa = p.criarPessoa();
+                        	Usuario pessoa = p.criarUsuario();
                             listaUsuarios.add(pessoa);
                             System.out.println("\n");
                         }else if(opcao == 2){
-                        	Usuario empresa = e.criarEmpresa();
+                        	Usuario empresa = e.criarUsuario();
                             listaUsuarios.add(empresa);
                             System.out.println("\n");
                         }else{
@@ -65,7 +65,8 @@ public class Test{
 	                		((Empresa) usuario).atualizarUsuario();
 	                	}
 	                	break;
-                	}System.out.println("\nPara atualizar o usuario, primeiro faca login!\n");
+                	}
+                	System.out.println("\nPara atualizar o usuario, primeiro faca login!\n");
                     break;
                     
                 case 3:
