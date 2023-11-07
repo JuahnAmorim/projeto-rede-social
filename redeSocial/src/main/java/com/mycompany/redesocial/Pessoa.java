@@ -3,16 +3,16 @@ package com.mycompany.redesocial;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Pessoa extends Usuario {
+public class Pessoa extends Usuario { // declarando que Pessoa esta herdando de Usuario
 
-    private int idade;
+    private int idade; // atributo da classe
 
-    public Pessoa(String nome, int idade) {
-        super(nome);
+    public Pessoa(String nome, int idade) { // construtor da classe
+        super(nome); // utiliza-se o super para puxar um atributo da classe pai
         this.idade = idade;
     }
     
-    public Pessoa(){
+    public Pessoa(){ // construtor default
     }
 
     public int getIdade() {
@@ -23,8 +23,8 @@ public class Pessoa extends Usuario {
         this.idade = idade;
     }
 
-    @Override
-    public Usuario criarUsuario() {
+    @Override // anotacao override para indicar que esse metodo esta sendo herdado
+    public Usuario criarUsuario() { // sobrescrevendo o metodo da classe pai/superclasse
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite o nome da pessoa: ");
         String nome = sc.nextLine();
@@ -32,18 +32,18 @@ public class Pessoa extends Usuario {
         int idade = sc.nextInt();
         sc.nextLine();
         System.out.println("O usuario " + nome + " foi criado!");
-        return new Pessoa(nome, idade);
+        return new Pessoa(nome, idade); // retorna um novo objeto do tipo pessoa
     }
 
     @Override
-    public void atualizarUsuario() {
+    public void atualizarUsuario() { // sobrescrevendo o metodo da classe pai/superclasse
         Scanner sc = new Scanner(System.in);
 		System.out.print("Novo nome: ");
 		String novoNome = sc.nextLine();
 		System.out.print("Nova idade: ");
 		int novaIdade = sc.nextInt();
 		sc.nextLine();
-    	this.setNome(novoNome);
+    	this.setNome(novoNome); // vai setar as novas informacoes do usuario manipulado
     	this.setIdade(novaIdade);
     	System.out.println("\nAs informacoes do usuario " + novoNome + " foram atualizadas!\n");
     }
@@ -74,7 +74,7 @@ public class Pessoa extends Usuario {
     }
 
 	@Override
-	public String toString() {
+	public String toString() { // metodo toString para permitir printar diretamente um objeto
 		return "\nPessoa\nNome: " + this.getNome() +
 			   "\nIdade: " + this.getIdade() + "\n";
 	}

@@ -3,18 +3,19 @@ package com.mycompany.redesocial;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Empresa extends Usuario {
+public class Empresa extends Usuario { // declarando que Empresa esta herdando de Usuario
 
-    private String ramo;
+    private String ramo; // atributos da classe
     private String anuncio;
 
-    public Empresa(String nome, String ramo, String anuncio) {
+    public Empresa(String nome, String ramo, String anuncio) { // construtor da classe
         super(nome);
         this.ramo = ramo;
         this.anuncio = anuncio;
     }
     
-    public Empresa(){}
+    public Empresa(){ // construtor default
+    }
 
     public String getRamo() {
         return ramo;
